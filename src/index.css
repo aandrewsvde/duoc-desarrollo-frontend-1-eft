@@ -1,0 +1,181 @@
+/* ==========================================================================
+   index.css — Identidad visual de PixelForge Games sobre Bootstrap 5
+   Asignatura : Desarrollo Frontend I (PFY2201) — Evaluación Final Transversal
+   Autor      : Agustín Andrews
+
+   Bootstrap resuelve la maquetación y la responsividad. Aquí solo se añaden
+   los colores de marca y los pocos ajustes que el framework no cubre.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. VARIABLES DE MARCA
+   ========================================================================== */
+
+:root {
+  --pf-marca: #16233f;        /* Azul noche: barra superior, portada y pie */
+  --pf-marca-claro: #2b4278;
+  --pf-acento: #f2b705;       /* Ámbar: llamados a la acción */
+  --pf-acento-oscuro: #d19d04;
+  --pf-exito: #2f7a4d;        /* Verde: precios */
+}
+
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f4f6fb;
+}
+
+h1, h2, h3,
+.navbar-brand {
+  font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+}
+
+/* El desplazamiento suave de la barra de navegación deja los títulos justo
+   debajo de la barra fija, en vez de ocultos tras ella. */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+
+/* ==========================================================================
+   3. UTILIDADES PROPIAS
+   Siguen la convención de nombres de Bootstrap (bg-, text-, btn-) para que
+   el marcado se lea de forma uniforme.
+   ========================================================================== */
+
+.bg-marca {
+  background-color: var(--pf-marca) !important;
+}
+
+.text-marca {
+  color: var(--pf-marca) !important;
+}
+
+.text-exito {
+  color: var(--pf-exito) !important;
+}
+
+.btn-marca {
+  background-color: var(--pf-marca);
+  border-color: var(--pf-marca);
+  color: #fff;
+}
+
+.btn-marca:hover,
+.btn-marca:focus {
+  background-color: var(--pf-marca-claro);
+  border-color: var(--pf-marca-claro);
+  color: #fff;
+}
+
+
+/* ==========================================================================
+   4. BARRA DE NAVEGACIÓN
+   ========================================================================== */
+
+.navbar.bg-marca {
+  border-bottom: 3px solid var(--pf-acento);
+}
+
+/* Los enlaces del menú son <button> para poder animar el desplazamiento,
+   así que hay que devolverles el aspecto de enlace de navegación. */
+.navbar-nav .nav-link.btn-link {
+  text-decoration: none;
+  border: 0;
+  background: none;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: var(--pf-acento);
+}
+
+/* En móvil el menú desplegado necesita algo de aire. */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding-top: 0.75rem;
+  }
+}
+
+
+/* ==========================================================================
+   5. PORTADA
+   ========================================================================== */
+
+.portada {
+  background-color: var(--pf-marca);
+  background-image: linear-gradient(135deg, #16233f 0%, #2b4278 100%);
+}
+
+
+/* ==========================================================================
+   6. TARJETAS DE VIDEOJUEGO
+   ========================================================================== */
+
+.tarjeta-videojuego {
+  border-top: 4px solid var(--pf-acento);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.tarjeta-videojuego:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Las portadas conservan la misma proporción en toda la grilla. */
+.tarjeta-videojuego .card-img-top {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background-color: #eef2fa;
+}
+
+
+/* ==========================================================================
+   7. BOTONES Y FOCO
+   ========================================================================== */
+
+.btn-warning {
+  --bs-btn-bg: var(--pf-acento);
+  --bs-btn-border-color: var(--pf-acento);
+  --bs-btn-color: var(--pf-marca);
+  --bs-btn-hover-bg: var(--pf-acento-oscuro);
+  --bs-btn-hover-border-color: var(--pf-acento-oscuro);
+  --bs-btn-hover-color: var(--pf-marca);
+}
+
+/* Foco visible en todo elemento interactivo, para navegación por teclado. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--pf-acento);
+  outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   8. PREFERENCIA DE MENOS MOVIMIENTO
+   Respeta la configuración de accesibilidad del sistema operativo.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .tarjeta-videojuego,
+  .tarjeta-videojuego:hover {
+    transform: none;
+    transition: none;
+  }
+}
